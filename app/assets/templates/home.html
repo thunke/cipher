@@ -15,13 +15,19 @@
         <form class="ui form value-pairs">
             <div ng-repeat="pair in cipher.valuePairs | orderBy:'cypherVal'" class="field">
                 <label>{{pair.cypherVal}} <sub>{{pair.count}}</sub></label>
-                <input type="text" ng-model="pair.clearVal" />
+                <input type="text" ng-model="pair.clearVal" ng-change="cipher.renderClearText()" />
             </div>
         </form>
-        <input type="button" class="ui basic red button reset-button" value="Reset Value Pairs" />
+        <div class="button group">
+            <input type="button" class="ui tiny basic red button reset-button" value="Reset Value Pairs" ng-click="cipher.resetValuePairs()" />
+            <input type="button" class="ui tiny basic purple button reset-button" value="Reveal Author" />
+            <input type="button" class="ui tiny basic orange button reset-button" value="Solve it for me" />
+        </div>
     </div>
 </div>
 
+<h3>How to play</h3>
+<p>Substitution ciphers are encrpyted messages where letters are substituted with other letters to conceal the original message. To solve the cipher, use the Value Pair fields to substitue letters for the cipher text letters and watch as the plain text updates.</p>
 
 
 

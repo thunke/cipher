@@ -4,7 +4,7 @@ angular.module('cipher').factory 'Cipher', ->
     class Cipher
         constructor: (@cipherText) ->
             @clearText = @cipherText
-            @valuePairs = @resetValuePairs()
+            @resetValuePairs()
 
         illegalChars = [" ", ".", ","]
 
@@ -21,7 +21,7 @@ angular.module('cipher').factory 'Cipher', ->
                         count: 1
                 return
             ), this
-            @valuePairs
+            return
 
         renderClearText: ->
             cytArray = @cipherText.split ""
@@ -29,7 +29,8 @@ angular.module('cipher').factory 'Cipher', ->
 
             cytArray.forEach ((letter) ->
                 pair = _.findWhere @valuePairs, cypherVal: letter
-                clrArray.push pair.clearVal
+                clrArray.push if pair then pair.clearVal else letter
                 return
             ), this
+            @clearText = clrArray.join ""
             return
