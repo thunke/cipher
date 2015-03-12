@@ -1,0 +1,31 @@
+<div class="ui grid">
+    <div class="eight wide column">
+        <h3>Cipher Text</h3>
+        <div class="ui message cipher-text">
+            <p>{{cipher.cipherText}}</p>
+        </div>
+
+        <h3>Plain Text</h3>
+        <div class="ui message plain-text">
+            <p>{{cipher.clearText}}</p>
+        </div>
+    </div>
+    <div class="eight wide column">
+        <h3>Value Pair Substitutions</h3>
+        <form class="ui form value-pairs">
+            <div ng-repeat="pair in cipher.valuePairs | orderBy:'cypherVal'" class="field">
+                <label>{{pair.cypherVal}} <sub>{{pair.count}}</sub></label>
+                <input type="text" ng-model="pair.clearVal" />
+            </div>
+        </form>
+        <input type="button" class="ui basic red button reset-button" value="Reset Value Pairs" />
+    </div>
+</div>
+
+
+
+
+
+
+<!-- <a href="https://github.com/thunke/Substitution-Cipher"><img style="cursor: pointer; position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+ -->
