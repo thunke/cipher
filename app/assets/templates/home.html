@@ -6,22 +6,25 @@
         </div>
 
         <h3>Plain Text</h3>
-        <div class="ui message plain-text">
+        <div class="ui message plain-text" ng-class="{green:cipher.solved}">
             <p>{{cipher.clearText}}</p>
+            <p ng-if="cipher.revealAuthor || cipher.solved" class="author">- {{cipher.author}}</p>
+            <p ng-if="cipher.solved" class="huge"><strong>Cogratulations!</strong> You solved the puzzle.</p>
         </div>
+
     </div>
     <div class="eight wide column">
         <h3>Value Pair Substitutions</h3>
         <form class="ui form value-pairs">
             <div ng-repeat="pair in cipher.valuePairs | orderBy:'cypherVal'" class="field">
                 <label>{{pair.cypherVal}} <sub>{{pair.count}}</sub></label>
-                <input type="text" ng-model="pair.clearVal" ng-change="cipher.renderClearText()" />
+                <input type="text" ng-model="pair.clearVal" ng-change="cipher.renderClearText()" click-select />
             </div>
         </form>
         <div class="button group">
-            <input type="button" class="ui tiny basic red button reset-button" value="Reset Value Pairs" ng-click="cipher.resetValuePairs()" />
-            <input type="button" class="ui tiny basic purple button reset-button" value="Reveal Author" />
-            <input type="button" class="ui tiny basic orange button reset-button" value="Solve it for me" />
+            <input type="button" class="ui tiny basic teal button reset-button" value="Reset Value Pairs" ng-click="cipher.resetValuePairs()" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" />
+            <input type="button" class="ui tiny basic purple button reset-button" value="Reveal Author" ng-click="cipher.revealAuthor = !cipher.revealAuthor" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" />
+            <input type="button" class="ui tiny basic orange button reset-button" value="Solve it for me" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" />
         </div>
     </div>
 </div>

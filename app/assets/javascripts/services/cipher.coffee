@@ -6,8 +6,10 @@ angular.module('cipher').factory 'Cipher', ->
             @cipherText = cipher.cipher_text
             @clearText = @cipherText
             @author = cipher.author
+            @solution = cipher.clear_text
             @revealAuthor = false
             @resetValuePairs()
+            @solved = false
 
         illegalChars = [" ", ".", ","]
 
@@ -36,4 +38,5 @@ angular.module('cipher').factory 'Cipher', ->
                 return
             ), this
             @clearText = clrArray.join ""
+            @solved = @clearText == @solution
             return
