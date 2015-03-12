@@ -6,7 +6,7 @@ angular.module('cipher').factory 'Cipher', ->
             @cipherText = cipher.cipher_text
             @clearText = @cipherText
             @author = cipher.author
-            @solution = cipher.clear_text
+            @solution = cipher.solution
             @revealAuthor = false
             @resetValuePairs()
             @solved = false
@@ -38,5 +38,5 @@ angular.module('cipher').factory 'Cipher', ->
                 return
             ), this
             @clearText = clrArray.join ""
-            @solved = @clearText == @solution
+            @solved = @solution == CryptoJS.SHA1(@clearText).toString()
             return

@@ -15,6 +15,7 @@
 //= require underscore/underscore
 //= require angular/angular
 //= require angular-route/angular-route
+//= require dfm-crypto-js/rollups/sha1
 //
 //= require_tree ../templates/
 //
