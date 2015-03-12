@@ -1,1 +1,7 @@
+<%= content_for :javascript do %>
+  <%= javascript_tag do %>
+    var ciphers = <%== @ciphers.to_json %>;
+  <% end %>
+<% end %>
+<%= yield :javascript %>
 <main ng-view role="main"></main>

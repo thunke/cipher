@@ -2,8 +2,11 @@
 
 angular.module('cipher').factory 'Cipher', ->
     class Cipher
-        constructor: (@cipherText) ->
+        constructor: (cipher) ->
+            @cipherText = cipher.cipher_text
             @clearText = @cipherText
+            @author = cipher.author
+            @revealAuthor = false
             @resetValuePairs()
 
         illegalChars = [" ", ".", ","]
