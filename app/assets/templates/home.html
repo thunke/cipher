@@ -16,17 +16,21 @@
     <div class="eight wide column">
         <h3>Value Pair Substitutions</h3>
         <form class="ui form value-pairs">
-            <div ng-repeat="pair in cipher.valuePairs | orderBy:'cypherVal'" class="field">
+            <div ng-repeat="pair in cipher.valuePairs" class="field">
                 <label>{{pair.cypherVal}} <sub>{{pair.count}}</sub></label>
                 <input type="text" ng-model="pair.clearVal" ng-change="cipher.renderClearText()" click-select />
             </div>
         </form>
         <div class="button group">
-            <input type="button" class="ui tiny basic teal button reset-button" value="Reset Value Pairs" ng-click="cipher.resetValuePairs()" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" />
-            <input type="button" class="ui tiny basic purple button reset-button" value="Reveal Author" ng-click="cipher.revealAuthor = !cipher.revealAuthor" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" />
-            <input type="button" class="ui tiny basic orange button reset-button" value="Solve it for me" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" />
+            <input type="button" class="ui tiny basic teal button" value="Reset Value Pairs" ng-click="cipher.resetValuePairs()" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" />
+            <input type="button" class="ui tiny basic purple button" value="Reveal Author" ng-click="cipher.revealAuthor = !cipher.revealAuthor" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" />
+            <input type="button" class="ui tiny basic orange button" value="Solve it for me" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" />
         </div>
     </div>
+</div>
+
+<div class="button group">
+    <input type="button" class="ui green button" value="Next Puzzle" />
 </div>
 
 <h3>How to play</h3>

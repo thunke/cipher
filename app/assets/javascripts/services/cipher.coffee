@@ -11,7 +11,7 @@ angular.module('cipher').factory 'Cipher', ->
             @resetValuePairs()
             @solved = false
 
-        illegalChars = [" ", ".", ","]
+        illegalChars = [" ", ".", ",", "?", "!", ";", ":"]
 
         resetValuePairs: ->
             cytArray = @cipherText.split ""
@@ -38,5 +38,5 @@ angular.module('cipher').factory 'Cipher', ->
                 return
             ), this
             @clearText = clrArray.join ""
-            @solved = @solution == CryptoJS.SHA1(@clearText).toString()
+            @solved = @solution == CryptoJS.SHA1(@clearText.toUpperCase()).toString()
             return
