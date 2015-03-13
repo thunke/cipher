@@ -13,7 +13,7 @@ angular.module('cipher').factory 'Cipher', ->
             @solved = false
             @solutionFromServer = false
 
-        ignoreChars = [" ", ".", ",", "?", "!", ";", ":"]
+        ignoreChars = [" ", ".", ",", "?", "!", ";", ":", "—", "'", "-"]
 
         resetValuePairs: ->
             ctArray = @cipherText.split ""
