@@ -1,6 +1,6 @@
 <%= content_for :javascript do %>
   <%= javascript_tag do %>
-    var ciphers = <%== @ciphers.to_json %>;
+    var cipher = <%== @cipher.to_json %>;
   <% end %>
 <% end %>
 <%= yield :javascript %>

@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'messages#show'
+  get '/:id', :to => 'messages#show'
+
 end

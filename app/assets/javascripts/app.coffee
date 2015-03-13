@@ -10,10 +10,15 @@ app = angular.module 'app', ['cipher', 'ngRoute']
 app.config ($locationProvider, $routeProvider, $httpProvider) ->
     $locationProvider.html5Mode(true).hashPrefix('!')
 
-    $routeProvider.when('/', {
+    $routeProvider.when '/', {
         controller: 'homeCtrl',
         templateUrl: '/assets/home.html'
-    })
+    }
+
+    $routeProvider.when '/:id', {
+        controller: 'homeCtrl',
+        templateUrl: '/assets/home.html'
+    }
 
 
 app.config ($httpProvider) ->

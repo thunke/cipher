@@ -111,6 +111,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     ref (1.0.5)
+    responders (2.0.2)
+      railties (>= 4.2.0.alpha, < 5)
     slop (3.6.0)
     spring (1.3.3)
     sprockets (2.12.3)
@@ -149,6 +151,7 @@ DEPENDENCIES
   less-rails
   pg
   rails (= 4.2.0.rc2)
+  responders (~> 2.0)
   spring
   therubyracer
   uglifier (>= 1.3.0)
