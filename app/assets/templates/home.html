@@ -13,14 +13,24 @@
         </div>
 
     </div>
-    <div class="eight wide column">
+    <div class="eight wide column value-pairs">
+        <dropdown class="ui dropdown pairs-sort">
+            <div class="text">Sort By:</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <div class="item active selected" ng-click="orderPairs('order', false)">Order of Appearance</div>
+                <div class="item" ng-click="orderPairs('cipherVal', false)">Alphabetical</div>
+                <div class="item" ng-click="orderPairs('count', true)">Frequency</div>
+            </div>
+        </dropdown>
         <h3>Value Pair Substitutions</h3>
-        <form class="ui form value-pairs">
-            <div ng-repeat="pair in cipher.valuePairs" class="field">
+        <form class="ui form">
+            <div ng-repeat="pair in cipher.valuePairs | orderBy:pairOrder:pairReverse" class="field">
                 <label>{{pair.cipherVal}} <sub>{{pair.count}}</sub></label>
                 <input type="text" ng-model="pair.clearVal" ng-change="cipher.renderClearText()" click-select />
             </div>
         </form>
+
         <div class="button group">
             <input type="button" class="ui tiny basic teal button" value="Reset Value Pairs" ng-click="cipher.resetValuePairs()" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" />
             <input type="button" class="ui tiny basic purple button" value="Reveal Author" ng-click="cipher.revealAuthor = !cipher.revealAuthor" ng-disabled="cipher.solved||cipher.revealAuthor" ng-class="{disabled:cipher.solved||cipher.revealAuthor}" />

@@ -1,28 +1,38 @@
-.value-pairs.ui.form {
-    .clearfix;
+.value-pairs {
+    position: relative;    
 
-    .field {
-        float: left;
-        width: 25%;
-        clear: none;
+    .pairs-sort {
+        position: absolute;
+        top: 3em;
+        right: 3em;
     }
 
-    label {
-        display: inline-block;
-        font-size: 1.5rem;
-        position: relative;
-        width: 40px;
-        padding: 5px 0;
+    .ui.form {
+        .clearfix;
 
-        sub {
-            font-size: 0.8rem;
+        .field {
+            float: left;
+            width: 25%;
+            clear: none;
         }
-    }
 
-    input[type="text"] {
-        width: 40px;
-        padding: 0.3em;
-        font-size: 1.3em;
-        cursor: pointer;
+        label {
+            display: inline-block;
+            font-size: 1.5rem;
+            position: relative;
+            width: 40px;
+            padding: 5px 0;
+
+            sub {
+                font-size: 0.8rem;
+            }
+        }
+
+        input[type="text"] {
+            width: 40px;
+            padding: 0.3em;
+            font-size: 1.3em;
+            cursor: pointer;
+        }
     }
 }

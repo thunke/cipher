@@ -17,4 +17,11 @@ angular.module('cipher').controller 'homeCtrl', ($scope, $location, Cipher, Mess
         )
         return
 
+    $scope.orderPairs = (field, reverse) ->
+        $scope.pairOrder = field
+        $scope.pairReverse = reverse
+        return
+
+    $scope.orderPairs('order', false)
+
     return

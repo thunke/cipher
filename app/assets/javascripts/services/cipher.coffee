@@ -18,6 +18,7 @@ angular.module('cipher').factory 'Cipher', ->
         resetValuePairs: ->
             ctArray = @cipherText.split ""
             @valuePairs = []
+            order = 0
 
             _.each ctArray, ((letter) ->
                 if ignoreChars.indexOf(letter) < 0
@@ -26,6 +27,7 @@ angular.module('cipher').factory 'Cipher', ->
                         cipherVal: letter
                         clearVal: letter
                         count: 1
+                        order: order++
                 return
             ), this
             @renderClearText()
@@ -48,6 +50,7 @@ angular.module('cipher').factory 'Cipher', ->
             ctArray = @cipherText.split ""
             slnArray = solution.split ""
             @valuePairs = []
+            order = 0
 
             _.each ctArray, ((letter, i) ->
                 if ignoreChars.indexOf(letter) < 0
@@ -56,6 +59,7 @@ angular.module('cipher').factory 'Cipher', ->
                         cipherVal: letter
                         clearVal: slnArray[i]
                         count: 1
+                        order: order++
                 return
             ), this
             @solutionFromServer = true
