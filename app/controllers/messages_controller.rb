@@ -17,7 +17,10 @@ class MessagesController < ApplicationController
       :solution => Digest::SHA1.hexdigest(@message.message.upcase)
     }
 
-    respond_with :api, @cipher
+    respond_to do |format|
+      format.html
+      format.json { render json: @cipher }
+    end
   end
 
   def solution

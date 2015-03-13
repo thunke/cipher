@@ -5,7 +5,7 @@ _.templateSettings =
     interpolate: /\{\{(.+?)\}\}/g
 
 
-app = angular.module 'app', ['cipher', 'ngRoute']
+app = angular.module 'app', ['cipher', 'ngRoute', 'ngResource']
 
 app.config ($locationProvider, $routeProvider, $httpProvider) ->
     $locationProvider.html5Mode(true).hashPrefix('!')
