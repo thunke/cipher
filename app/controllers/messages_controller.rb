@@ -25,6 +25,6 @@ class MessagesController < ApplicationController
 
   def solution
     @message = Message.find params[:id]
-    respond_with :api, @message.message
+    respond_with( { :solution => @message.message.upcase }.to_json )
   end
 end
