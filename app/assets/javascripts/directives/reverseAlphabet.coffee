@@ -1,21 +1,18 @@
 "use strict"
 
-angular.module('cipher').directive 'reverseAlphabet', ->
+angular.module('cipher').directive 'reverseAlphabet', (Utils) ->
         restrict: 'EA'
         scope:
             cipherText: "="
         templateUrl: '/assets/directives/reverseAlphabet.html'
         link: ($scope, $element) ->
-            alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-                            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-            reverseAlpha = _.clone(alpha).reverse()
-            ignoreChars = [" ", ".", ",", "?", "!", ";", ":", "—", "'", "-"]
+            reverseAlpha = _.clone(Utils.alphabet).reverse()
 
             $scope.$watch('cipherText', ->
                 cipherArray = $scope.cipherText.split ""
                 $scope.reverseVal = cipherArray.map((el) ->
-                    if ignoreChars.indexOf(el) < 0
-                        reverseAlpha[alpha.indexOf el]
+                    if Utils.ignoreChars.indexOf(el) < 0
+                        reverseAlpha[Utils.alphabet.indexOf el]
                     else
                         el
                 ).join ""

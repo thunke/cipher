@@ -1,6 +1,6 @@
 "use strict"
 
-angular.module('cipher').factory 'Cipher', ->
+angular.module('cipher').factory 'Cipher', (Utils) ->
     class Cipher
         constructor: (cipher) ->
             @id = cipher.id
@@ -13,15 +13,13 @@ angular.module('cipher').factory 'Cipher', ->
             @solved = false
             @solutionFromServer = false
 
-        ignoreChars = [" ", ".", ",", "?", "!", ";", ":", "—", "'", "-"]
-
         resetValuePairs: ->
             ctArray = @cipherText.split ""
             @valuePairs = []
             order = 0
 
             _.each ctArray, ((letter) ->
-                if ignoreChars.indexOf(letter) < 0
+                if Utils.ignoreChars.indexOf(letter) < 0
                     pair = _.findWhere @valuePairs, cipherVal: letter
                     if pair then pair.count++ else @valuePairs.push
                         cipherVal: letter
@@ -53,7 +51,7 @@ angular.module('cipher').factory 'Cipher', ->
             order = 0
 
             _.each ctArray, ((letter, i) ->
-                if ignoreChars.indexOf(letter) < 0
+                if Utils.ignoreChars.indexOf(letter) < 0
                     pair = _.findWhere @valuePairs, cipherVal: letter
                     if pair then pair.count++ else @valuePairs.push
                         cipherVal: letter

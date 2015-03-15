@@ -1,22 +1,18 @@
 "use strict"
 
-angular.module('cipher').directive 'caesarShift', ->
+angular.module('cipher').directive 'caesarShift', (Utils) ->
         restrict: 'EA'
         scope:
             cipherText: "="
         templateUrl: '/assets/directives/caesarShift.html'
         link: ($scope, $element) ->
-            alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-                            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-
-            ignoreChars = [" ", ".", ",", "?", "!", ";", ":", "—", "'", "-"]
 
             calcCaesar = (cipherArray, offset) ->
                 offset: offset
                 message: cipherArray.map((el) ->
-                    if ignoreChars.indexOf(el) < 0
-                        idx = alpha.indexOf(el) + offset
-                        alpha[if idx > 25 then idx - 26 else idx]
+                    if Utils.ignoreChars.indexOf(el) < 0
+                        idx = Utils.alphabet.indexOf(el) + offset
+                        Utils.alphabet[if idx > 25 then idx - 26 else idx]
                     else
                         el
                 ).join ""
