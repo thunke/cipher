@@ -17,6 +17,7 @@
 //= require angular-resource/angular-resource
 //= require angular-route/angular-route
 //= require dfm-crypto-js/rollups/sha1
+//= require highcharts.com/highcharts
 //
 //= require_tree ../templates/
 //
