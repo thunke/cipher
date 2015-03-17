@@ -1,6 +1,6 @@
 "use strict"
 
-angular.module('cipher').controller 'homeCtrl', ($scope, $location, Cipher, Message) ->
+angular.module('cipher').controller('homeCtrl', ['$scope', '$location', 'Cipher', 'Message', ($scope, $location, Cipher, Message) ->
     $scope.cipher = new Cipher cipher
 
     $scope.loadNew = ->
@@ -26,3 +26,4 @@ angular.module('cipher').controller 'homeCtrl', ($scope, $location, Cipher, Mess
     $scope.activeTab = 1
 
     return
+])

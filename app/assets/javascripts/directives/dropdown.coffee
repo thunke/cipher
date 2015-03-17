@@ -1,6 +1,6 @@
 "use strict"
 
-angular.module('cipher').directive 'dropdown', ($timeout) ->
+angular.module('cipher').directive('dropdown', ['$timeout', ($timeout) ->
         restrict: 'EA'
         replace: true
         transclude: true
@@ -13,3 +13,4 @@ angular.module('cipher').directive 'dropdown', ($timeout) ->
                     transition: $scope.transition || 'drop'
             , 250)
             return
+])

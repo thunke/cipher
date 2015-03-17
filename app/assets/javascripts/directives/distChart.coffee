@@ -1,6 +1,6 @@
 "use strict"
 
-angular.module('cipher').directive 'distChart', (Utils) ->
+angular.module('cipher').directive('distChart', ['Utils', (Utils) ->
     restrict: 'EA'
     scope:
         chartData: "="
@@ -47,3 +47,4 @@ angular.module('cipher').directive 'distChart', (Utils) ->
         )
 
         return
+])

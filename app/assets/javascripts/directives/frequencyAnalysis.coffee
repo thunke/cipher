@@ -1,6 +1,6 @@
 "use strict"
 
-angular.module('cipher').directive 'frequencyAnalysis', (Utils) ->
+angular.module('cipher').directive('frequencyAnalysis', ['Utils', (Utils) ->
     restrict: 'EA'
     scope:
         valuePairs: "="
@@ -54,3 +54,4 @@ angular.module('cipher').directive 'frequencyAnalysis', (Utils) ->
         , true)
 
         return
+])

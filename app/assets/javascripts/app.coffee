@@ -7,7 +7,7 @@ _.templateSettings =
 
 app = angular.module 'app', ['cipher', 'ngRoute', 'ngResource']
 
-app.config ($locationProvider, $routeProvider, $httpProvider) ->
+app.config(['$locationProvider', '$routeProvider', '$httpProvider', ($locationProvider, $routeProvider, $httpProvider) ->
     $locationProvider.html5Mode(true).hashPrefix('!')
 
     $routeProvider.when '/', {
@@ -19,10 +19,11 @@ app.config ($locationProvider, $routeProvider, $httpProvider) ->
         controller: 'homeCtrl',
         templateUrl: '/assets/home.html'
     }
+])
 
-
-app.config ($httpProvider) ->
+app.config(['$httpProvider', ($httpProvider) ->
     $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+])
 
 jQuery ->
     angular.bootstrap(document, ['app'])

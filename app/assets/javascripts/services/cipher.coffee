@@ -1,6 +1,6 @@
 "use strict"
 
-angular.module('cipher').factory 'Cipher', (Utils) ->
+angular.module('cipher').factory('Cipher', ['Utils', (Utils) ->
     class Cipher
         constructor: (cipher) ->
             @id = cipher.id
@@ -63,3 +63,4 @@ angular.module('cipher').factory 'Cipher', (Utils) ->
             @solutionFromServer = true
             @renderClearText()
             return
+])

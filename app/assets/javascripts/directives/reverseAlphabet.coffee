@@ -1,6 +1,6 @@
 "use strict"
 
-angular.module('cipher').directive 'reverseAlphabet', (Utils) ->
+angular.module('cipher').directive('reverseAlphabet', ['Utils', (Utils) ->
         restrict: 'EA'
         scope:
             cipherText: "="
@@ -20,3 +20,4 @@ angular.module('cipher').directive 'reverseAlphabet', (Utils) ->
             )
 
             return
+])
