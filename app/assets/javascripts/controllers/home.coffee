@@ -23,5 +23,6 @@ angular.module('cipher').controller 'homeCtrl', ($scope, $location, Cipher, Mess
         return
 
     $scope.orderPairs('order', false)
+    $scope.activeTab = 1
 
     return

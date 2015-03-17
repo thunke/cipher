@@ -35,19 +35,26 @@
             <input type="button" class="ui tiny basic teal button" value="Reset Value Pairs" ng-click="cipher.resetValuePairs()" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" />
             <input type="button" class="ui tiny basic purple button" value="Reveal Author" ng-click="cipher.revealAuthor = !cipher.revealAuthor" ng-disabled="cipher.solved||cipher.revealAuthor" ng-class="{disabled:cipher.solved||cipher.revealAuthor}" />
             <input type="button" class="ui tiny basic orange button" value="Solve it for me" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" ng-click="solve()" />
+            <input type="button" class="ui tiny green button" value="Next Puzzle" ng-click="loadNew()" />
         </div>
     </div>
 </div>
 
-<div class="button group">
-    <input type="button" class="ui green button" value="Next Puzzle" ng-click="loadNew()" />
+<h3>Power Tools</h3>
+<div class="ui top attached tabular menu">
+    <a class="item" ng-class="{active:activeTab===1}" ng-click="activeTab=1">Frequency Analysis</a>
+    <a class="item" ng-class="{active:activeTab===2}" ng-click="activeTab=2">Caesar Shift</a>
+    <a class="item" ng-class="{active:activeTab===3}" ng-click="activeTab=3">Reverse Alphabet</a>
+  </div>
+<div class="ui bottom attached tab segment" ng-class="{active:activeTab===1}">
+    <div frequency-analysis value-pairs="cipher.valuePairs"></div>
+</div>
+<div class="ui bottom attached tab segment" ng-class="{active:activeTab===2}">
+    <div caesar-shift cipher-text="cipher.cipherText"></div>
+</div>
+<div class="ui bottom attached tab segment" ng-class="{active:activeTab===3}">
+    <div reverse-alphabet cipher-text="cipher.cipherText"></div>
 </div>
 
 <h3>How to play</h3>
 <p>Substitution ciphers are encrpyted messages where letters are substituted with other letters to conceal the original message. To solve the cipher, use the Value Pair fields to substitue letters for the cipher text letters and watch as the plain text updates.</p>
-
-<h3>Power Tools</h3>
-<div frequency-analysis value-pairs="cipher.valuePairs"></div>
-<div reverse-alphabet cipher-text="cipher.cipherText"></div>
-<div caesar-shift cipher-text="cipher.cipherText"></div>
-

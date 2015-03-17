@@ -10,6 +10,10 @@ angular.module('cipher').directive 'distChart', (Utils) ->
             chart:
               renderTo: $element[0]
               type: 'column'
+              style:
+                fontFamily: "'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif"
+            colors:
+                ['#3b83c0', '#f2c61f', '#5bbd72']
             credits:
                 enabled: false
             title: null
@@ -27,6 +31,7 @@ angular.module('cipher').directive 'distChart', (Utils) ->
                 }, {
                     name: "Distribution within the cipher text"
                     data: []
+                    visible: false
                 }, {
                     name: "Distribution within the clear text"
                     data: []
