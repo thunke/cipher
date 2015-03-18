@@ -2,6 +2,8 @@
 
 An angular.js (using coffeescript) Rails app that serves randomized substitution ciphers.
 
+See it live: http://crypto.pizza
+
 ## Setup Instructions
 
 - clone the repo

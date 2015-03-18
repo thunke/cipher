@@ -1,5 +1,5 @@
 <div class="ui grid">
-    <div class="eight wide column">
+    <div class="seven wide column">
         <h3>Cipher Text</h3>
         <div class="ui message cipher-text">
             <p>{{cipher.cipherText}}</p>
@@ -13,7 +13,7 @@
         </div>
 
     </div>
-    <div class="eight wide column value-pairs">
+    <div class="nine wide column value-pairs">
         <dropdown class="ui dropdown pairs-sort">
             <div class="text">Sort By:</div>
             <i class="dropdown icon"></i>
@@ -24,18 +24,21 @@
             </div>
         </dropdown>
         <h3>Value Pair Substitutions</h3>
-        <form class="ui form">
-            <div ng-repeat="pair in cipher.valuePairs | orderBy:pairOrder:pairReverse" class="field">
-                <label>{{pair.cipherVal}} <sub>{{pair.count}}</sub></label>
-                <input type="text" ng-model="pair.clearVal" ng-change="cipher.renderClearText()" click-select />
-            </div>
-        </form>
 
-        <div class="button group">
-            <input type="button" class="ui tiny basic teal button" value="Reset Value Pairs" ng-click="cipher.resetValuePairs()" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" />
-            <input type="button" class="ui tiny basic purple button" value="Reveal Author" ng-click="cipher.revealAuthor = !cipher.revealAuthor" ng-disabled="cipher.solved||cipher.revealAuthor" ng-class="{disabled:cipher.solved||cipher.revealAuthor}" />
-            <input type="button" class="ui tiny basic orange button" value="Solve it for me" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" ng-click="solve()" />
-            <input type="button" class="ui tiny green button" value="Next Puzzle" ng-click="loadNew()" />
+        <div class="touchpad">
+            <form class="ui form">
+                <div ng-repeat="pair in cipher.valuePairs | orderBy:pairOrder:pairReverse" class="field">
+                    <label>{{pair.cipherVal}} <sub>{{pair.count}}</sub></label>
+                    <input type="text" ng-model="pair.clearVal" ng-change="cipher.renderClearText()" click-select />
+                </div>
+            </form>
+
+            <div class="button group">
+                <input type="button" class="ui tiny basic teal button" value="Reset Value Pairs" ng-click="cipher.resetValuePairs()" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" />
+                <input type="button" class="ui tiny basic purple button" value="Reveal Author" ng-click="cipher.revealAuthor = !cipher.revealAuthor" ng-disabled="cipher.solved||cipher.revealAuthor" ng-class="{disabled:cipher.solved||cipher.revealAuthor}" />
+                <input type="button" class="ui tiny basic orange button" value="Solve it for me" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" ng-click="solve()" />
+                <input type="button" class="ui tiny green button" value="Next Puzzle" ng-click="loadNew()" />
+            </div>
         </div>
     </div>
 </div>

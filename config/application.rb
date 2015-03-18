@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Cipher
   class Application < Rails::Application
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'components', 'templates')
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components', 'templates', 'public')
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -27,9 +27,9 @@ module Cipher
     # Explicitly register the extensions we are interested in compiling
     config.assets.precompile.push(Proc.new do |path|
       File.extname(path).in? [
-        '.html', '.erb', '.haml',                 # Templates
-        '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
-        '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
+        '.html', '.erb', '.haml',                         # Templates
+        '.png',  '.gif', '.jpg', '.jpeg', '.svg', '.ico', # Images
+        '.eot',  '.otf', '.svc', '.woff', '.ttf',         # Fonts
       ]
     end)
 
