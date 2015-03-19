@@ -15,6 +15,7 @@
 //= require underscore/underscore
 //= require angular/angular
 //= require angular-resource/angular-resource
+//= require angular-sanitize/angular-sanitize
 //= require angular-route/angular-route
 //= require dfm-crypto-js/rollups/sha1
 //= require highcharts.com/highcharts

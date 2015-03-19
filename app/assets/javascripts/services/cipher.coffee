@@ -12,6 +12,7 @@ angular.module('cipher').factory('Cipher', ['Utils', (Utils) ->
             @resetValuePairs()
             @solved = false
             @solutionFromServer = false
+            @clearText2 = @cipherText
 
         resetValuePairs: ->
             ctArray = @cipherText.split ""
@@ -31,7 +32,7 @@ angular.module('cipher').factory('Cipher', ['Utils', (Utils) ->
             @renderClearText()
             return
 
-        renderClearText: ->
+        renderClearText: (newVal) ->
             ctArray = @cipherText.split ""
             clrArray = []
 
@@ -41,8 +42,15 @@ angular.module('cipher').factory('Cipher', ['Utils', (Utils) ->
                 return
             ), this
             @clearText = clrArray.join ""
+            @clearMarkup = @buildHTML(clrArray, newVal)
             @solved = @solution == CryptoJS.SHA1(@clearText.toUpperCase()).toString()
             return
+
+        buildHTML: (clrArray, newVal) ->
+            return clrArray.map (el) ->
+                if newVal and el.toUpperCase() == newVal.toUpperCase() then cls = "highlight"
+                _.template('<span class="{{cls}}">{{el}}</span>', {el: el, cls: cls})
+            .join ""
 
         solve: (solution) ->
             ctArray = @cipherText.split ""
