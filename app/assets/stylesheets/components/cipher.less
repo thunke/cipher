@@ -14,6 +14,19 @@
             background-color: #e9ffff;
         }
     }
+
+    span {
+        background-color: transparent;
+        -webkit-transition: background 200ms linear;
+        -moz-transition: background 200ms linear;
+        -ms-transition: background 200ms linear;
+        -o-transition: background 200ms linear;
+        transition: background 200ms linear;
+
+        &.highlight {
+            background-color: yellow;
+        }
+    }
 }
 
 .author {

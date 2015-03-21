@@ -7,7 +7,7 @@
 
         <h3>Plain Text</h3>
         <div class="ui message plain-text" ng-class="{green:cipher.solved, teal:cipher.solutionFromServer}">
-            <p>{{cipher.clearText}}</p>
+            <p plain-text text="cipher.clearMarkup"></p>
             <p ng-if="cipher.revealAuthor || cipher.solved" class="author">- {{cipher.author}}</p>
             <p ng-if="cipher.solved&&!cipher.solutionFromServer" class="huge"><strong>Cogratulations!</strong> You solved the puzzle.</p>
         </div>
@@ -28,8 +28,8 @@
         <div class="touchpad">
             <form class="ui form">
                 <div ng-repeat="pair in cipher.valuePairs | orderBy:pairOrder:pairReverse" class="field">
-                    <label>{{pair.cipherVal}} <sub>{{pair.count}}</sub></label>
-                    <input type="text" ng-model="pair.clearVal" ng-change="cipher.renderClearText()" click-select />
+                    <label ng-attr-for="pair{{$index}}">{{pair.cipherVal}} <sub>{{pair.count}}</sub></label>
+                    <input type="text" ng-attr-id="pair{{$index}}" ng-model="pair.clearVal" ng-change="cipher.renderClearText(pair.clearVal)" click-select />
                 </div>
             </form>
 
