@@ -1,17 +1,26 @@
 <div class="ui grid">
     <div class="seven wide column">
         <h3>Cipher Text</h3>
-        <div class="ui message cipher-text">
+        <div class="ui message cipher-text" ng-hide="enterCustom">
             <p>{{cipher.cipherText}}</p>
         </div>
 
-        <h3>Plain Text</h3>
-        <div class="ui message plain-text" ng-class="{green:cipher.solved, teal:cipher.solutionFromServer}">
+        <div class="ui form custom-input" ng-show="enterCustom">
+            <div class="field">
+                <textarea placeholder="Enter a custom cipher..." ng-model="customCipher" id="customCipher"></textarea>
+            </div>
+            <div class="field">
+                <input type="button" class="ui tiny green button" value="Create" ng-click="createCustom()" />
+                <input type="button" class="ui tiny button" value="Cancel" ng-click="enterCustom=false" />
+            </div>
+        </div>
+
+        <h3 ng-hide="enterCustom">Plain Text</h3>
+        <div class="ui message plain-text" ng-class="{green:cipher.solved, teal:cipher.solutionFromServer}" ng-hide="enterCustom">
             <p plain-text text="cipher.clearMarkup"></p>
             <p ng-if="cipher.revealAuthor || cipher.solved" class="author">- {{cipher.author}}</p>
             <p ng-if="cipher.solved&&!cipher.solutionFromServer" class="huge"><strong>Cogratulations!</strong> You solved the puzzle.</p>
         </div>
-
     </div>
     <div class="nine wide column value-pairs">
         <dropdown class="ui dropdown pairs-sort">
@@ -23,6 +32,7 @@
                 <div class="item" ng-click="orderPairs('count', true)">Frequency</div>
             </div>
         </dropdown>
+
         <h3>Value Pair Substitutions</h3>
 
         <div class="touchpad">
@@ -35,11 +45,12 @@
 
             <div class="button group">
                 <input type="button" class="ui tiny basic teal button" value="Reset Value Pairs" ng-click="cipher.resetValuePairs()" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" />
-                <input type="button" class="ui tiny basic purple button" value="Reveal Author" ng-click="cipher.revealAuthor = !cipher.revealAuthor" ng-disabled="cipher.solved||cipher.revealAuthor" ng-class="{disabled:cipher.solved||cipher.revealAuthor}" />
-                <input type="button" class="ui tiny basic orange button" value="Solve it for me" ng-disabled="cipher.solved" ng-class="{disabled:cipher.solved}" ng-click="solve()" />
+                <input type="button" class="ui tiny basic purple button" value="Reveal Author" ng-click="cipher.revealAuthor = !cipher.revealAuthor" ng-disabled="cipher.disableAuthor()" ng-class="{disabled:cipher.disableAuthor()}" />
+                <input type="button" class="ui tiny basic orange button" value="Solve it for me" ng-disabled="cipher.disableSolved()" ng-class="{disabled:cipher.disableSolved()}" ng-click="solve()" />
                 <input type="button" class="ui tiny green button" value="Next Puzzle" ng-click="loadNew()" />
             </div>
         </div>
+        <p><a class="pull-right" href="" ng-click="openCustom()">Enter a custom cipher</a></p>
     </div>
 </div>
 

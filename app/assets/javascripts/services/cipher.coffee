@@ -8,6 +8,7 @@ angular.module('cipher').factory('Cipher', ['Utils', (Utils) ->
             @clearText = @cipherText
             @author = cipher.author
             @solution = cipher.solution
+            @isCustom = cipher.custom || false
             @revealAuthor = false
             @resetValuePairs()
             @solved = false
@@ -71,4 +72,10 @@ angular.module('cipher').factory('Cipher', ['Utils', (Utils) ->
             @solutionFromServer = true
             @renderClearText()
             return
+
+        disableAuthor: ->
+            @solved || @revealAuthor || @isCustom
+
+        disableSolved: ->
+            @solved || @isCustom
 ])

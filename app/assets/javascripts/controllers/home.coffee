@@ -1,6 +1,6 @@
 "use strict"
 
-angular.module('cipher').controller('homeCtrl', ['$scope', '$location', 'Cipher', 'Message', ($scope, $location, Cipher, Message) ->
+angular.module('cipher').controller('homeCtrl', ['$scope', '$location', '$timeout', 'Cipher', 'Message', ($scope, $location, $timeout, Cipher, Message) ->
     $scope.cipher = new Cipher cipher
 
     $scope.loadNew = ->
@@ -20,6 +20,20 @@ angular.module('cipher').controller('homeCtrl', ['$scope', '$location', 'Cipher'
     $scope.orderPairs = (field, reverse) ->
         $scope.pairOrder = field
         $scope.pairReverse = reverse
+        return
+
+    $scope.openCustom = ->
+        $scope.enterCustom = true
+        $timeout( ->
+            $('#customCipher').select()
+        , 100)
+
+    $scope.createCustom = ->
+        $scope.cipher.destroy
+        $scope.cipher = new Cipher
+            cipher_text: $scope.customCipher
+            custom: true
+        $scope.enterCustom = false
         return
 
     $scope.orderPairs('order', false)
