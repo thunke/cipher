@@ -1,4 +1,10 @@
 //Baseline site rules
+
+//common breakpoints
+@sub-tablet: 600px;
+@sub-mobile: 380px;
+
+//utilities
 .clearfix {
     zoom: 1;
 
@@ -14,8 +20,17 @@
 
 .button.group {
     margin-top: 2em;
+
+    @media (max-width: @sub-tablet) {
+        margin-top: 1em;
+    }
+
+    input[type=button] {
+        margin: 0 0 0.5em;
+    }
 }
 
 .pull-right {
     float: right;
 }
+

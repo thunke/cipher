@@ -27,6 +27,7 @@ angular.module('cipher').controller('homeCtrl', ['$scope', '$location', '$timeou
         $timeout( ->
             $('#customCipher').select()
         , 100)
+        window.scrollTo(0, 0)
 
     $scope.createCustom = ->
         $scope.cipher.destroy
