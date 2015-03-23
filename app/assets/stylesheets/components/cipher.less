@@ -3,8 +3,15 @@
     &.ui.message {
         background-color: #fff;
         border-radius: 15px;
-        font-size: 1.3em;
-        min-height: 150px;
+        font-size: 1.3rem;
+
+        @media (max-width: @sub-tablet) {
+            min-height: auto;
+        }
+
+        @media (max-width: @sub-mobile) {
+            font-size: 1.0rem;
+        }
 
         &.green {
             background-color: #ebffed;
@@ -12,6 +19,18 @@
 
         &.teal {
             background-color: #e9ffff;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .ui.ribbon.label {
+            top: -5px;
+            left: -41px;
+            @media (max-width: @sub-mobile) {
+                left: -35px;
+            }
         }
     }
 

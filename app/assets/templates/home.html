@@ -2,6 +2,7 @@
     <div class="seven wide column">
         <h3>Cipher Text</h3>
         <div class="ui message cipher-text" ng-hide="enterCustom">
+            <span class="ui teal ribbon label">Cipher Text</span>
             <p>{{cipher.cipherText}}</p>
         </div>
 
@@ -15,8 +16,9 @@
             </div>
         </div>
 
-        <h3 ng-hide="enterCustom">Plain Text</h3>
+        <h3>Plain Text</h3>
         <div class="ui message plain-text" ng-class="{green:cipher.solved, teal:cipher.solutionFromServer}" ng-hide="enterCustom">
+            <span class="ui teal ribbon label">Plain Text</span>
             <p plain-text text="cipher.clearMarkup"></p>
             <p ng-if="cipher.revealAuthor || cipher.solved" class="author">- {{cipher.author}}</p>
             <p ng-if="cipher.solved&&!cipher.solutionFromServer" class="huge"><strong>Cogratulations!</strong> You solved the puzzle.</p>
@@ -34,8 +36,8 @@
         </dropdown>
 
         <h3>Value Pair Substitutions</h3>
-
         <div class="touchpad">
+            <span class="ui teal ribbon label">Value Pair Substitutions</span>
             <form class="ui form">
                 <div ng-repeat="pair in cipher.valuePairs | orderBy:pairOrder:pairReverse" class="field">
                     <label ng-attr-for="pair{{$index}}">{{pair.cipherVal}} <sub>{{pair.count}}</sub></label>
@@ -54,21 +56,23 @@
     </div>
 </div>
 
-<h3>Power Tools</h3>
-<div class="ui top attached tabular menu">
-    <a class="item" ng-class="{active:activeTab===1}" ng-click="activeTab=1">Frequency Analysis</a>
-    <a class="item" ng-class="{active:activeTab===2}" ng-click="activeTab=2">Caesar Shift</a>
-    <a class="item" ng-class="{active:activeTab===3}" ng-click="activeTab=3">Reverse Alphabet</a>
-  </div>
-<div class="ui bottom attached tab segment" ng-class="{active:activeTab===1}">
-    <div frequency-analysis value-pairs="cipher.valuePairs"></div>
-</div>
-<div class="ui bottom attached tab segment" ng-class="{active:activeTab===2}">
-    <div caesar-shift cipher-text="cipher.cipherText"></div>
-</div>
-<div class="ui bottom attached tab segment" ng-class="{active:activeTab===3}">
-    <div reverse-alphabet cipher-text="cipher.cipherText"></div>
-</div>
+<section id="power-tools">
+    <h3>Power Tools</h3>
+    <div class="ui top attached tabular menu">
+        <a class="item" ng-class="{active:activeTab===1}" ng-click="activeTab=1">Frequency Analysis</a>
+        <a class="item" ng-class="{active:activeTab===2}" ng-click="activeTab=2">Caesar Shift</a>
+        <a class="item" ng-class="{active:activeTab===3}" ng-click="activeTab=3">Reverse Alphabet</a>
+      </div>
+    <div class="ui bottom attached tab segment" ng-class="{active:activeTab===1}">
+        <div frequency-analysis value-pairs="cipher.valuePairs"></div>
+    </div>
+    <div class="ui bottom attached tab segment" ng-class="{active:activeTab===2}">
+        <div caesar-shift cipher-text="cipher.cipherText"></div>
+    </div>
+    <div class="ui bottom attached tab segment" ng-class="{active:activeTab===3}">
+        <div reverse-alphabet cipher-text="cipher.cipherText"></div>
+    </div>
+</section>
 
 <h3>How to play</h3>
 <p>Substitution ciphers are encrpyted messages where letters are substituted with other letters to conceal the original message. To solve the cipher, use the Value Pair fields to substitue letters for the cipher text letters and watch as the plain text updates.</p>
