@@ -27,36 +27,12 @@ body {
 
 //Main content area
 main {
-    margin: 0 auto 50px;
+    margin: 0 auto 1.5em;
     min-height: 50vh;
     max-width: 1000px;
     padding: 0 1.5em 1em;
-
-
-    .ui.ribbon.label {
-        display: none;
-        @media (max-width: @sub-tablet) {
-            display: inline-block;
-        }
-    }
-
-    .ui.grid {
-        h3 {
-            @media (max-width: @sub-tablet) {
-                display: none;
-            }
-        }
-    }
 }
 
-
-@media (max-width: @sub-tablet) {
-    //Don't get semantic ui's notion of responsive or their obsession with the important tag at the moment.
-    .ui.grid .wide.column{
-        width: 100% !important;
-        padding-bottom: 0;
-    }
-}
 
 //Footer
 footer {
@@ -78,6 +54,6 @@ footer {
     }
 
     .spacer {
-        margin: 0 7px;
+        margin: 0 0.7em;
     }
 }
