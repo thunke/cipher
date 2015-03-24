@@ -2,6 +2,8 @@ class MessagesController < ApplicationController
   respond_to :json, :html
 
   def show
+    @pageClass = "home"
+
     if params[:id]
       @message = Message.find_by_id params[:id]
     end

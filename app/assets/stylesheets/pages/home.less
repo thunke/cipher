@@ -1,0 +1,27 @@
+//Home page styles
+
+main.home {
+    .ui.ribbon.label {
+        display: none;
+        @media (max-width: @sub-tablet) {
+            display: inline-block;
+        }
+    }
+
+    .ui.grid {
+        h3 {
+            @media (max-width: @sub-tablet) {
+                display: none;
+            }
+        }
+    }
+
+    .ui.grid .wide.column{
+        @media (max-width: @sub-tablet) {
+            //Don't get semantic ui's notion of responsive or their obsession with the important tag at the moment.
+            width: 100% !important;
+            padding-bottom: 0;
+        }
+    }
+
+}
